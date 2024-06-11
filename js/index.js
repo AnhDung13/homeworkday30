@@ -19,7 +19,7 @@ var links = {
   video: "https://www.youtube.com/results?search_query=",
   hát: "https://zingmp3.vn/tim-kiem/tat-ca?q=",
   "đường đi": "https://www.google.com/maps/search/",
-  "chỉ đường tới": "https://www.google.com/maps/search/",
+  tới: "https://www.google.com/maps/search/",
 };
 
 // Đặt một số thuộc tính cho việc nhận diện
@@ -41,11 +41,6 @@ recognition.onresult = (event) => {
   // Xử lý chuỗi văn bản để biết được người dùng vừa đọc gì
   result.style.border = "1px solid green";
 
-  // if (links[text.toLowerCase()]) {
-  // window.open(ulr + searchText, "_blank");
-  // } else {
-  //   result.innerHTML = `Không thực hiện được yêu cầu`;
-  // }
   var keys = Object.keys(links);
   keys.forEach(function (key) {
     if (text.toLowerCase().indexOf(key) !== -1) {
@@ -55,14 +50,9 @@ recognition.onresult = (event) => {
         .trim();
       searchText = searchText.split(" ").join("+");
       window.open(ulr + searchText, "_blank");
-      console.log(searchText);
-      console.log(ulr);
       result.innerHTML = `${text}`;
-    } else {
-      result.innerHTML = `Không thực hiện được yêu cầu`;
     }
   });
-  console.log(text);
 };
 
 // Dừng nhận diện khi giọng nói kết thúc
